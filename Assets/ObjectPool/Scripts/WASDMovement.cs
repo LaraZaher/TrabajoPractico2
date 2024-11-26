@@ -6,25 +6,16 @@ public class WASDMovement : MonoBehaviour {
 
 	public float speed = 20f;
 
-    void Update () {
-        Vector3 pos = transform.position;
-
-        if (Input.GetKey ("w")) {
-            pos.z += speed * Time.deltaTime;
-        }
-
-        if (Input.GetKey ("s")) {
-            pos.z -= speed * Time.deltaTime;
-        }
-
-        if (Input.GetKey ("d")) {
-            pos.x += speed * Time.deltaTime;
-        }
-
-        if (Input.GetKey ("a")) {
-            pos.x -= speed * Time.deltaTime;
-        }
-         
-         transform.position = pos;
+    void Update () 
+    {    
+        movimiento();
+    }
+    void movimiento()
+    {
+        
+        float Horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        float Vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+        Vector3 pos = new Vector3(Horizontal, 0f, Vertical);
+        transform.Translate (pos);
     }
 }
